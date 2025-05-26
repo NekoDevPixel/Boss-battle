@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
     {
         animator.SetTrigger("Smash");
         // float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.4f);
         animator.ResetTrigger("Smash");
         animator.SetBool("IsIdle", false); // 공격 후 idle 상태로 전환
         isAttacking = false; // 공격 상태를 false로 설정
@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     {
         animator.SetTrigger("Thrust");
         // float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.25f);
         animator.ResetTrigger("Thrust");
         animator.SetBool("IsIdle", false); // 공격 후 idle 상태로 전환
         isAttacking = false; // 공격 상태를 false로 설정
