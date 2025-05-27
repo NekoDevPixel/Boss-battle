@@ -65,11 +65,11 @@ public class PlayerMove : MonoBehaviour
         bool isMoving = (currentPosition - lastPosition).sqrMagnitude > 0.001f;
         bool isAttacking = playerAttack.isAttacking;
 
-        if (isMoving || !isAttacking)
+        if (isMoving || isAttacking)
         {
             idleTimer = 0f;
             animator.ResetTrigger("Break");
-            animator.SetBool("IsIdle", false);
+            animator.SetBool("IsIdle", true);
 
         }
         else
@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                animator.SetBool("IsIdle", true); // 기본 idle 유지
+                animator.SetBool("IsIdle", false); // 기본 idle 유지
             }
         }
 

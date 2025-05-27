@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHeal : MonoBehaviour
 {
-    GameManager gameManager;
+    // GameManager gameManager;
     Animator animator;
     private PlayerMove playerMove;
     [Header("플레이어 체력 회복")]
@@ -15,8 +15,8 @@ public class PlayerHeal : MonoBehaviour
     {
         playerMove = GetComponent<PlayerMove>();
         animator = GetComponent<Animator>();
-        gameManager = FindFirstObjectByType<GameManager>();
-        playerMaxH = gameManager.playerMaxHealth; // 게임 매니저에서 플레이어 최대 체력 가져오기
+        // gameManager = FindFirstObjectByType<GameManager>();
+        playerMaxH = GameManager.Instance.playerMaxHealth; // 게임 매니저에서 플레이어 최대 체력 가져오기
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class PlayerHeal : MonoBehaviour
 
     void OnHeal()
     {
-        if (!isHealing && Input.GetKeyDown(KeyCode.H) && gameManager.playerHealth < playerMaxH) // 예: H 키를 눌렀을 때 힐 실행
+        if (!isHealing && Input.GetKeyDown(KeyCode.H) && GameManager.Instance.playerHealth < playerMaxH) // 예: H 키를 눌렀을 때 힐 실행
         {
             isHealing = true;
             StartCoroutine(HealCoroutine());
@@ -44,6 +44,7 @@ public class PlayerHeal : MonoBehaviour
             return;
         }
     }
+    
 
     IEnumerator HealCoroutine()
     {
@@ -60,10 +61,10 @@ public class PlayerHeal : MonoBehaviour
     void HealPlayer(float amount)
     {
         // 플레이어의 체력을 회복하는 로직
-        gameManager.playerHealth += amount;
-        if (gameManager.playerHealth > playerMaxH)
+        GameManager.Instance.playerHealth += amount;
+        if (GameManager.Instance.playerHealth > playerMaxH)
         {
-            gameManager.playerHealth = playerMaxH; // 최대 체력 초과 방지
+            GameManager.Instance.playerHealth = playerMaxH; // 최대 체력 초과 방지
         }
         Debug.Log("플레이어 체력 회복: " + amount);
     }
