@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
-    Vector2 move;
+    public Vector2 move;
 
     [Header("플레이어 이동 속도")]
     public float speed = 5f;

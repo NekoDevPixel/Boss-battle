@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("플레이어 기본 체력")]
     public int playerMaxHealth = 100; // 플레이어의 초기 체력
-    public int playerHealth; // 플레이어의 현재 체력
+    public float playerHealth; // 플레이어의 현재 체력
 
     [Header("플레이어 기본 공격력")]
     public int playerAttackPower = 10; // 플레이어의 초기 공격력
