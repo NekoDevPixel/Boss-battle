@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class OnOffattack : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private bool hasHit = false;
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Trigger entered: " + collision.name);
-        if (collision.CompareTag("Enemy"))
+        if (!hasHit && collision.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy hit by attack: " + collision.name);
-            // 적에게 데미지 주기
+            hasHit = true;
+            Debug.Log("Enemy hit in TriggerStay: " + collision.name);
+            GameManager.Instance.monsterHealth -= GameManager.Instance.playerAttackPower;
             // collision.GetComponent<Enemy>().TakeDamage(damageAmount);
         }
+    }
+
+    private void OnDisable()
+    {
+        // 공격이 끝날 때 초기화
+        hasHit = false;
     }
 }
