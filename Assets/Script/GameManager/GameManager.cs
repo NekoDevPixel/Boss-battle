@@ -22,6 +22,15 @@ public class GameManager : MonoBehaviour
     public int playerMaxHealth = 100; // 플레이어의 초기 체력
     public float playerHealth; // 플레이어의 현재 체력
 
+    [Header("플레이어 스테미나")]
+    public float playerStamina = 0f; // 플레이어의 초기 스테미나
+    [Header("플레이어 최대 스테미나")]
+    public float playerMaxStamina = 100f; // 플레이어의 최대 스테미나
+    [Header("플레이어 스테미나 소모량")]
+    public float playerStaminaConsumption = 25f; // 플레이어의 스테미나 소모량
+    [Header("플레이어 스테미나 회복량")]
+    public float playerStaminaRecovery = 10f; // 플레이어의 스테미나 회복량
+
     [Header("플레이어 기본 공격력")]
     public int playerAttackPower = 10; // 플레이어의 초기 공격력
 
@@ -43,7 +52,21 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // 이미 존재하는 경우 중복 방지
+            // Destroy(gameObject); // 이미 존재하는 경우 중복 방지
+            return;
+        }
+    }
+
+    public void InStamina()
+    {
+        playerStamina += playerStaminaRecovery; // 스테미나 회복
+    }
+    public void OutStamina()
+    {
+        playerStamina -= playerStaminaConsumption; // 스테미나 소모
+        if (playerStamina < 0)
+        {
+            playerStamina = 0; // 스테미나가 음수가 되지 않도록 보장
         }
     }
 

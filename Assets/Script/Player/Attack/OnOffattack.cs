@@ -11,7 +11,7 @@ public class OnOffattack : MonoBehaviour
             hasHit = true;
             Debug.Log("Enemy hit in TriggerStay: " + collision.name);
             GameManager.Instance.monsterHealth -= GameManager.Instance.playerAttackPower;
-            // collision.GetComponent<Enemy>().TakeDamage(damageAmount);
+            GameManager.Instance.InStamina();
         }
     }
 

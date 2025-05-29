@@ -11,6 +11,8 @@ public class PlayerHeal : MonoBehaviour
     private int playerMaxH;
     private bool isHealing = false; // 회복 중인지 여부
 
+    private float stamina;
+
     void Start()
     {
         playerMove = GetComponent<PlayerMove>();
@@ -21,14 +23,14 @@ public class PlayerHeal : MonoBehaviour
 
     void Update()
     {
-
         OnHeal();
         StopHeal();
     }
 
     void OnHeal()
     {
-        if (!isHealing && Input.GetKeyDown(KeyCode.H) && GameManager.Instance.playerHealth < playerMaxH) // 예: H 키를 눌렀을 때 힐 실행
+        if (!isHealing && Input.GetKeyDown(KeyCode.H) && GameManager.Instance.playerHealth < playerMaxH
+        && GameManager.Instance.playerStamina >= 25) // 예: H 키를 눌렀을 때 힐 실행
         {
             isHealing = true;
             StartCoroutine(HealCoroutine());
@@ -72,6 +74,7 @@ public class PlayerHeal : MonoBehaviour
     public void OnAnimationEnd()
     {
         Debug.Log("애니메이션이 끝났습니다!");
+        GameManager.Instance.OutStamina(); 
         HealPlayer(20);
     }
 }
