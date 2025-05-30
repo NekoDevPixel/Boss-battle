@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
         {
             if (instance == null)
             {
-                return null;
+                Debug.LogError("GameManager instance is null! Ensure it exists in the scene.");
             }
             return instance;
         }
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public int playerDefensePower = 5; // 플레이어의 초기 방어력
 
     [Header("몬스터 기본 체력")]
-    public int monsterMaxHealth = 50; // 몬스터의 초기 체력}
+    public int monsterMaxHealth = 100; // 몬스터의 초기 체력}
     public float monsterHealth; // 몬스터의 현재 체력
 
     private void Awake()
