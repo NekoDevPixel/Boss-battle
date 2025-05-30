@@ -1,29 +1,59 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class MonsterUI : MonoBehaviour
 {
+    [Header("몬스터 체력 슬라이더")]
     public Slider healthSlider;
     public float smoothSpeed = 5f;
+
+    [Header("몬스터 체력 텍스트")]
+    public TextMeshProUGUI healthText;
+
     private float targetFill;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float animatedHealth;
+    private Tween healthTween;
+
     void Start()
     {
-        healthSlider.value = GameManager.Instance.monsterHealth / GameManager.Instance.monsterMaxHealth;
+        float currentHealth = GameManager.Instance.monsterHealth;
+        float maxHealth = GameManager.Instance.monsterMaxHealth;
+
+        animatedHealth = currentHealth;
+        healthSlider.value = currentHealth / maxHealth;
+        UpdateHealthText((int)animatedHealth);
     }
 
     void Update()
     {
-        showHealth();
+        ShowHealth();
+        AnimateHealthText();
     }
 
-    void showHealth()
+    void ShowHealth()
     {
-        // 실제 체력 계산
         targetFill = GameManager.Instance.monsterHealth / GameManager.Instance.monsterMaxHealth;
-
-        // 부드럽게 슬라이더 값 변화
         healthSlider.value = Mathf.Lerp(healthSlider.value, targetFill, Time.deltaTime * smoothSpeed);
     }
-    
+
+    void AnimateHealthText()
+    {
+        float currentHealth = GameManager.Instance.monsterHealth;
+        if (Mathf.Abs(animatedHealth - currentHealth) > 0.1f)
+        {
+            if (healthTween != null && healthTween.IsActive()) healthTween.Kill();
+
+            healthTween = DOTween.To(() => animatedHealth, x => {
+                animatedHealth = x;
+                UpdateHealthText((int)animatedHealth);
+            }, currentHealth, 0.3f).SetEase(Ease.OutQuad);
+        }
+    }
+
+    void UpdateHealthText(int value)
+    {
+        healthText.text = $"{value}";
+    }
 }

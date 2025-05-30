@@ -48,17 +48,19 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // 게임 매니저를 씬 전환 시에도 유지
+        DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (instance != this)
         {
-            // Destroy(gameObject); // 이미 존재하는 경우 중복 방지
-            return;
+            Destroy(gameObject); // 나 자신이 중복된 경우 삭제
         }
     }
 
+    
+
     public void InStamina()
     {
+        Debug.Log("Stamina increased!");
         playerStamina += playerStaminaRecovery; // 스테미나 회복
     }
     public void OutStamina()
