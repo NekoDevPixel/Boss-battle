@@ -2,16 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class RecognitionPlayer : MonoBehaviour
 {
     public GameObject monsterUI;
     public GameObject monster;
+    DOTweenAnimation UpHPbar;
 
 
     void Start()
     {
         monsterUI.SetActive(false);
+        UpHPbar = monsterUI.GetComponent<DOTweenAnimation>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,6 +22,7 @@ public class RecognitionPlayer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player entered detection range");
+            UpHPbar.DOPlay();
             monsterUI.SetActive(true);
         }
     }
@@ -28,6 +32,7 @@ public class RecognitionPlayer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player exited detection range");
+            UpHPbar.DORewind();
             monsterUI.SetActive(false);
         }
     }

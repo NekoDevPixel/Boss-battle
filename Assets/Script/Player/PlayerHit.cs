@@ -24,7 +24,7 @@ public class PlayerHit : MonoBehaviour
         if (isHit)
         {
             animator.SetTrigger("Hit"); // 맞았을 때 애니메이션 트리거
-            GameManager.Instance.playerHealth -= 10; // 예시로 10만큼 체력 감소
+            GameManager.Instance.playerHealth -= GameManager.Instance.monsterAttackDamage; // 예시로 10만큼 체력 감소
             isHit = false; // 맞았음을 초기화
         }
     }

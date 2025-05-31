@@ -7,12 +7,15 @@ public class PlayerDash : MonoBehaviour
     public float dashSpeed = 20f;
     private Vector2 moveInput;
     private Vector2 lastMoveDir;
-    private bool isDashing = false;
+    public bool isDashing = false;
+
+    private DashUI dashUI;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerMove = GetComponent<PlayerMove>();
+        dashUI = FindFirstObjectByType<DashUI>();
     }
 
     void Update()
@@ -34,7 +37,7 @@ public class PlayerDash : MonoBehaviour
         }
 
         // 대시 키 입력 및 대시 중이 아닐 때만 대시 실행
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && currentInput != Vector2.zero)
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && currentInput != Vector2.zero && dashUI.CanDash())
         {
             StartCoroutine(Dash());
         }
