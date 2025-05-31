@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 214673081}
   - component: {fileID: 214673080}
   - component: {fileID: 214673082}
+  - component: {fileID: 214673088}
   - component: {fileID: 214673083}
   - component: {fileID: 214673084}
   - component: {fileID: 214673085}
@@ -691,6 +692,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c176075331cee4684fef272a19a03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &214673088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214673076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09040bf5e8006b443ba8dce4e909b3a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 20
 --- !u!1 &244277461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,7 +2781,7 @@ MonoBehaviour:
   playerStaminaRecovery: 10
   playerAttackPower: 10
   playerDefensePower: 5
-  monsterMaxHealth: 50
+  monsterMaxHealth: 100
   monsterHealth: 0
 --- !u!4 &1731070889
 Transform:
