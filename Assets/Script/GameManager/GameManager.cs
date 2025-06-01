@@ -40,8 +40,10 @@ public class GameManager : MonoBehaviour
     [Header("몬스터 기본 체력")]
     public int monsterMaxHealth = 100; // 몬스터의 초기 체력}
     public float monsterHealth; // 몬스터의 현재 체력
-    [Header("몬스터 기본공격력")]
-    public int monsterAttackDamage = 15; // 몬스터의 공격력
+    [Header("몬스터 충돌 피해량")]
+    public int monsterHit = 5;
+    [Header("몬스터 발사체 공격력")]
+    public int monsterAttackDamage = 10; // 몬스터의 발사체 공격력
 
     private void Awake()
     {
@@ -63,6 +65,11 @@ public class GameManager : MonoBehaviour
     public void InStamina()
     {
         Debug.Log("Stamina increased!");
+        if (playerStamina >= playerMaxStamina)
+        {
+            playerStamina = playerMaxStamina; // 스테미나가 최대치를 넘지 않도록 보장
+            return;
+        }
         playerStamina += playerStaminaRecovery; // 스테미나 회복
     }
     public void OutStamina()
