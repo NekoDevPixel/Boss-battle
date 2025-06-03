@@ -26,7 +26,7 @@ public class Monster : MonoBehaviour
     {
         Debug.Log("Monster Hit");
         spriteRenderer.color = Color.white;
-        GameManager.Instance.monsterHealth -= GameManager.Instance.playerAttackPower;
+        BossIFM.Instance.Beshot();
         yield return new WaitForSeconds(0.1f); // 0.2초 동안 흰색 유지
         spriteRenderer.color = Color.black;
         isHit = false;

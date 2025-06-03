@@ -20,6 +20,7 @@ public class PlayerDeath : MonoBehaviour
     {
         if(GameManager.Instance.playerHealth <= 0)
         {
+           
             OnDeath(); // 플레이어의 체력이 0 이하일 때 OnDeath 메서드 호출
         }
         
@@ -28,8 +29,12 @@ public class PlayerDeath : MonoBehaviour
     void OnDeath()
     {
         animator.SetTrigger("Death");
-        if (playerInput != null)
-            playerInput.enabled = false;
+        playerInput.enabled = false; // 플레이어 입력 비활성화
+        GetComponent<PlayerMove>().enabled = false;
+        GetComponent<PlayerDash>().enabled = false;
+        GetComponent<PlayerAttack>().enabled = false;
+        GetComponent<PlayerHeal>().enabled = false;
+        GetComponent<PlayerHit>().enabled = false;
     }
     
 }

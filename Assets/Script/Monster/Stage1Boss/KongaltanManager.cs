@@ -12,9 +12,14 @@ public class KongaltanManager : MonoBehaviour
     private float timer = 0f;
     float healthPercent;
 
+    void Awake()
+    {
+        
+    }
+
     void Update()
     {
-        healthPercent = GameManager.Instance.monsterHealth / GameManager.Instance.monsterMaxHealth;
+        healthPercent = BossIFM.Instance.monsterHealth / BossIFM.Instance.monsterMaxHealth;
         timer += Time.deltaTime;
         if (healthPercent >= 0.75f)
         {
@@ -29,7 +34,7 @@ public class KongaltanManager : MonoBehaviour
 
     void ShootKong()
     {
-        GameObject kongaltan = Instantiate(kongaltanPrefab, firePoint.position, Quaternion.identity);
+        GameObject kongaltan = Instantiate(kongaltanPrefab, firePoint.position, Quaternion.identity, GameObject.Find("Kongaltan").transform);
         Rigidbody2D rb = kongaltan.GetComponent<Rigidbody2D>();
 
         // firePoint가 바라보는 방향으로 발사

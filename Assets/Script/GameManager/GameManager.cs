@@ -37,9 +37,7 @@ public class GameManager : MonoBehaviour
     [Header("플레이어 기본 방어력")]
     public int playerDefensePower = 5; // 플레이어의 초기 방어력
 
-    [Header("몬스터 기본 체력")]
-    public int monsterMaxHealth = 100; // 몬스터의 초기 체력}
-    public float monsterHealth; // 몬스터의 현재 체력
+    
     [Header("몬스터 충돌 피해량")]
     public int monsterHit = 5;
     [Header("몬스터 발사체 공격력")]
@@ -48,7 +46,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         playerHealth = playerMaxHealth; // 게임 시작 시 플레이어의 체력을 최대 체력으로 초기화
-        monsterHealth = monsterMaxHealth; // 게임 시작 시 몬스터의 체력을 최대 체력으로 초기화
         if (instance == null)
         {
             instance = this;

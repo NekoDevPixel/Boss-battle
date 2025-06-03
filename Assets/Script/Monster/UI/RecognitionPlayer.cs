@@ -39,7 +39,7 @@ public class RecognitionPlayer : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.monsterHealth <= 0)
+        if (BossIFM.Instance.monsterHealth <= 0)
         {
             StartCoroutine(Stoptime());
         }

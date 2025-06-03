@@ -18,8 +18,8 @@ public class MonsterUI : MonoBehaviour
 
     void Start()
     {
-        float currentHealth = GameManager.Instance.monsterHealth;
-        float maxHealth = GameManager.Instance.monsterMaxHealth;
+        float currentHealth = BossIFM.Instance.monsterHealth;
+        float maxHealth = BossIFM.Instance.monsterMaxHealth;
 
         animatedHealth = currentHealth;
         healthSlider.value = currentHealth / maxHealth;
@@ -34,13 +34,13 @@ public class MonsterUI : MonoBehaviour
 
     void ShowHealth()
     {
-        targetFill = GameManager.Instance.monsterHealth / GameManager.Instance.monsterMaxHealth;
+        targetFill = BossIFM.Instance.monsterHealth / BossIFM.Instance.monsterMaxHealth;
         healthSlider.value = Mathf.Lerp(healthSlider.value, targetFill, Time.deltaTime * smoothSpeed);
     }
 
     void AnimateHealthText()
     {
-        float currentHealth = GameManager.Instance.monsterHealth;
+        float currentHealth = BossIFM.Instance.monsterHealth;
         if (Mathf.Abs(animatedHealth - currentHealth) > 0.1f)
         {
             if (healthTween != null && healthTween.IsActive()) healthTween.Kill();
