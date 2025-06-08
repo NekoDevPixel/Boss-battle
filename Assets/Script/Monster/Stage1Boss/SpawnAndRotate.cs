@@ -20,28 +20,26 @@ public class SpawnAndRotate : MonoBehaviour
     public float speed = 5f;           // 날개 발사 속도
     public float shootDelay = 0.2f;    // 날개 발사 간격 (초)
 
-    private linoleum linoAnime;        // 애니메이션 상태 체크용
     private Transform[] blades;        // 회전 중 생성된 날개들
     public bool hasFired = false;     // 한 번만 발사되도록 설정
     public float Rtimer = 30f;          // 리셋 타이머
+    public float spintimer = 10f;
     public float timer = 0f;          // 타이머
 
     void Start()
     {
         Mspeed = rotationSpeed; // 초기 회전 속도 저장
         rotaion(); // 날개 생성
-        linoAnime = FindFirstObjectByType<linoleum>(); // 애니메이션 컴포넌트 찾기
     }
 
     void Update()
     {
-        Debug.Log($"isanime: {linoAnime.isanime}, hasFired: {hasFired}, 조건문 결과: {linoAnime.isanime && !hasFired}");
         timer += Time.deltaTime;
 
         if (!hasFired)
             Uprotaion();
 
-        if (linoAnime.isanime && hasFired == false)
+        if (hasFired == false && timer >= spintimer)
         {
             Debug.Log("애니메이션 끝, 발사 시작");
             rotationSpeed = 0f;
@@ -103,25 +101,23 @@ public class SpawnAndRotate : MonoBehaviour
 
     public void ResetSpawn()
     {
-        // 기존 블레이드 제거
-        if (blades != null)
-        {
-            for (int i = 0; i < blades.Length; i++)
-            {
-                if (blades[i] != null)
-                    Destroy(blades[i].gameObject);
-            }
-        }
+        // // 기존 블레이드 제거
+        // if (blades != null)
+        // {
+        //     for (int i = 0; i < blades.Length; i++)
+        //     {
+        //         if (blades[i] != null)
+        //             Destroy(blades[i].gameObject);
+        //     }
+        // }
 
         // 상태 초기화
         hasFired = false;
-        linoAnime.isanime = false;
 
         // 블레이드 다시 생성
         rotaion();
 
         rotationSpeed = Mspeed; // 회전 속도 초기화
-        linoAnime.PlayLinoAnime();
     }
 
 }

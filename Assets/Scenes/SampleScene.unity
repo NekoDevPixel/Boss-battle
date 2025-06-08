@@ -1913,7 +1913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchDamage: 10
-  projectileDamage: 20
+  SprojectileDamage: 20
+  LprojectileDamage: 30
   linoleumDamage: 15
   monsterMaxHealth: 100
   monsterHealth: 0
@@ -2307,13 +2308,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Monster: {fileID: 730504315}
   player: {fileID: 214673079}
-  rotationSpeed: 100
+  rotationSpeed: 120
   radius: 4
   bladePrefab: {fileID: 6691180525831177926, guid: acd0b8acd94cad24ebae48837f6ee9a9, type: 3}
   bladeCount: 8
-  speed: 20
+  speed: 40
   shootDelay: 0.5
-  Rtimer: 20
+  hasFired: 0
+  Rtimer: 40
+  spintimer: 10
   timer: 0
 --- !u!1 &840725208
 GameObject:

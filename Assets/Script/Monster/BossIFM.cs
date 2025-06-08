@@ -31,7 +31,8 @@ public class BossIFM : MonoBehaviour
 
     [Header("보스 피해량")]
     public float touchDamage = 10f; // 플레이어가 보스에게 닿았을 때 받는 피해량
-    public float projectileDamage = 20f; // 보스의 투사체에 맞았을 때 받는 피해량
+    public float SprojectileDamage = 20f; // 보스의 투사체에 맞았을 때 받는 피해량
+    public float LprojectileDamage = 30f; // 보스의 대형 투사체에 맞았을 때 받는 피해량
     public float linoleumDamage = 15f; // 보스의 리놀륨 공격에 맞았을 때 받는 피해량
 
     [Header("몬스터 기본 체력")]
@@ -48,9 +49,14 @@ public class BossIFM : MonoBehaviour
         GameManager.Instance.playerHealth -= touchDamage; // 플레이어가 보스에게 닿았을 때 피해량 적용
     }
 
-    public void projectileD()
+    public void SprojectileD()
     {
-        GameManager.Instance.playerHealth -= projectileDamage; // 보스의 투사체에 맞았을 때 피해량 적용
+        GameManager.Instance.playerHealth -= SprojectileDamage; // 보스의 투사체에 맞았을 때 피해량 적용
+    }
+
+    public void LprojectileD()
+    {
+        GameManager.Instance.playerHealth -= LprojectileDamage; // 보스의 대형 투사체에 맞았을 때 피해량 적용
     }
 
     public void linoleumD()
