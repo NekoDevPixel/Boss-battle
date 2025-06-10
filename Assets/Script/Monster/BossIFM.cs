@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class BossIFM : MonoBehaviour
 {
 
@@ -27,7 +28,7 @@ public class BossIFM : MonoBehaviour
         {
             Destroy(gameObject); // 중복 방지
         }
-    }   
+    }
 
     [Header("보스 피해량")]
     public float touchDamage = 10f; // 플레이어가 보스에게 닿았을 때 받는 피해량

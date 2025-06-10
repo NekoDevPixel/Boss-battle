@@ -64,7 +64,8 @@ public class SpawnAndRotate : MonoBehaviour
         {
             float angle = i * Mathf.PI * 2 / bladeCount;
             Vector3 pos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-            GameObject blade = Instantiate(bladePrefab, transform.position + pos, Quaternion.identity, transform);
+            GameObject blade = Instantiate(bladePrefab, transform.position + pos
+            , Quaternion.identity,transform);
             blades[i] = blade.transform;
         }
     }

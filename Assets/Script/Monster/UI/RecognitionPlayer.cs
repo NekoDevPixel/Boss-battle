@@ -8,13 +8,13 @@ public class RecognitionPlayer : MonoBehaviour
 {
     public GameObject monsterUI;
     public GameObject monster;
-    DOTweenAnimation UpHPbar;
+    public DOTweenAnimation UpHPbar;
 
 
     void Start()
     {
         monsterUI.SetActive(false);
-        UpHPbar = monsterUI.GetComponent<DOTweenAnimation>();
+        // UpHPbar = monsterUI.GetComponent<DOTweenAnimation>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
