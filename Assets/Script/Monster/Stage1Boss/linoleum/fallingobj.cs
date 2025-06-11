@@ -11,7 +11,6 @@ public class fallingobj : MonoBehaviour
 
     void Start()
     {
-        
         spawnPos = new Vector3(
         linoleum.transform.position.x,
         linoleum.transform.position.y + 10f,
@@ -31,8 +30,15 @@ public class fallingobj : MonoBehaviour
         {
             isFalling = true; // 낙하 시작
             Instantiate(fallingOBJ, spawnPos,
-            Quaternion.identity,GameObject.Find("Fobj").transform);
-            
+            Quaternion.identity, GameObject.Find("Fobj").transform);
+
         }
     }
+
+    void LinolumHit()
+    {
+        
+    }
+
+    
 }
